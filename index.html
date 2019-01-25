@@ -1,0 +1,52 @@
+<!doctype html> 
+<html lang="en"> 
+	<head> 
+		<meta charset="UTF-8" />
+		<title>Phaser 3 BitmapText Scaling Issue</title>
+		<script src="phaser.js"></script>
+		<style type="text/css">
+body {
+	margin: 0;
+}
+		</style>
+	</head>
+	<body>
+
+		<script type="text/javascript">
+
+			var config = {
+				type: Phaser.AUTO,
+				width: 800,
+				height: 600,
+				scene: {
+					preload: preload,
+					create: create,
+					update: update
+				}
+			};
+
+var game = new Phaser.Game(config);
+
+function preload ()
+{
+	this.load.image('grid', 'grid.png');
+	this.load.bitmapFont('pressStart', 'pressStart.png', 'pressStart.fnt');
+}
+
+function create ()
+{
+	this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'grid');
+	var text1 = this.add.bitmapText(this.cameras.main.width, 100, 'pressStart', 'Test').setOrigin(1, 0);
+	text1.setText('Change Text');
+	var text2 = this.add.bitmapText(this.cameras.main.width, 200, 'pressStart', 'Test').setOrigin(1, 0).setScale(.5);
+	text2.setText('Change Text');
+}
+
+function update ()
+{
+}
+
+		</script>
+
+	</body>
+</html>
